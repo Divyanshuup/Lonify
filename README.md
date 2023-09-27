@@ -1,6 +1,6 @@
-# Online Banking System V2.0.2
+# Loan Management
 
-This is an Online Banking Concept created using Django Web Framework.
+This is an Online Banking Concept with Loan Management created using Django Web Framework.
 
 
 ## Features
@@ -12,6 +12,36 @@ This is an Online Banking Concept created using Django Web Framework.
 * Transaction report with a date range filter 
 * See balance after every transaction in the Transaction Report
 * Calculate Monthly Interest Using Celery Scheduled tasks
+* POST API View to register a User’s (availing the loan) details
+* POST API View to apply & initiate a User Loan
+* EMIs calculation 
+● Interest is incurred starting from next day of disbursal
+● All due amounts should be paid back within tenure. All EMI amounts should be the same
+except the last which can be less than the other EMIs. Note
+● last EMI amount settles all pending dues.
+● EMIs consists of (formula to be deduced by you)
+● Part of Principal amount due
+● Interest on that principal amount for that month
+● EMI amount must be at-most 60% of the monthly income of the User
+● Interest rate should be >=14%
+● Total interest earned should be >10000
+● All EMIs will be due on 1st of every month starting from the following month of
+disbursement
+
+* POST API to register payment made
+* GET API to get statement and future dues
+* Response fields
+  ● Error: None if no error. Error String in case of failure
+● Past_transactions: Empty list for no past transactions. For valid transactions, each object
+contains:
+- Date
+- Principal
+- Interest
+- Amount_paid
+- Upcoming_transactions: List containing objects of EMI dates and amount. Each
+object contains:
+- Date: EMI date
+- Amount_due: Amount due on that date.
 * More efficient and accurate interest calculation and balance update
 * Ability to add Minimum and Maximum Transaction amount restriction
 * Modern UI with Tailwind CSS
